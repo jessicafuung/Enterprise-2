@@ -52,12 +52,13 @@ class OrderController(
     // Delete order by order ID and clear the cache in the service-layer
     @DeleteMapping("/{orderId}")
     fun deleteOrder(@PathVariable orderId: Long?): ResponseEntity<String> {
-        orderId?.let {
+        val order = orderService.getOrderById(orderId)
+        order?.let {
             orderService.deleteOrder(orderId)
             return ResponseEntity.ok("Order deleted!")
         }
 
-        throw WantsYourOrderIdException("Hellooo, where is the order id?")
+        throw WantsYourOrderIdException("Hellooo, can not find the order ID?")
     }
 
     // Create an order message to shipping service

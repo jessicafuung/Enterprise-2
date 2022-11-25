@@ -6,6 +6,9 @@ services:
     ports:
       - '5672:5672'
       - '15672:15672'
+    volumes:
+      - ./rabbitmq-config/definitions.json:/etc/rabbitmq/definitions.json:ro
+      - ./rabbitmq-config/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
 
   db:
     container_name: 'db-testing-db'

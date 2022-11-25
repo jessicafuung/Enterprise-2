@@ -28,6 +28,11 @@ class OrderService(
         return orderRepository.findAll(Pageable.ofSize(pageSize).withPage(page))
     }
 
+    // Retrieve all orders
+    fun getOrders(): List<Order> {
+        return orderRepository.findAll()
+    }
+
     // Retrieve one single order and caches it
     @Cacheable(key = "#id")
     fun getOrderById(id: Long?): Order? {

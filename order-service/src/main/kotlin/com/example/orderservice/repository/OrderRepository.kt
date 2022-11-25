@@ -12,4 +12,6 @@ interface OrderRepository: JpaRepository<Order, Long>, PagingAndSortingRepositor
 
     override fun findAll(pageable: Pageable): Page<Order>
 
+    override fun findAll(): List<Order>
+
 }
