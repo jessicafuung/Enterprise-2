@@ -1,6 +1,5 @@
 # Enterprise programming 2 - Final Exam
 
----
 ### Service:port
 * gateway: 8080/
 * discovery-service: 8761/
@@ -18,12 +17,10 @@
 
 ## Gateway (Starting point) - http://localhost:8080/
 
----
 All requests can be made against **port 8080**. The gateway does the routing for the other services.  
 
 ## User case
-
----
+ 
 1. Client can retrieve a single order
 2. Client can retrieve all orders (with pagination)
 3. Client can delete an order
@@ -33,7 +30,6 @@ All requests can be made against **port 8080**. The gateway does the routing for
 
 ## Order service 
 
----
 This service manages creating and updating orders, along with communicating with other services.
 
 ### Endpoints:
@@ -69,7 +65,6 @@ This service manages creating and updating orders, along with communicating with
 
 ## Payment service 
 
----
 This service is responsible for processing payment. It receives a synchronous http request from order-service, and respond with payment status. 
 
 ###Endpoint:
@@ -78,7 +73,6 @@ This service is responsible for processing payment. It receives a synchronous ht
 
 ## Shipping service 
 
----
 This service is responsible for processing the order for shipment. 
 
 ###Endpoint:
@@ -87,7 +81,6 @@ This service is responsible for processing the order for shipment.
 
 ## Docker-compose with profiles - Step-by-step guide
 
----
 1. Go to root of the project **pg6102_1022**
 2. To spin up the Docker: ``docker-compose up -d``
 3. Additionally, to start up the other services, use ``--profile [SERVICE]``
@@ -96,6 +89,5 @@ This service is responsible for processing the order for shipment.
 
 ## Troubleshooting
 
----
 * Docker - Eureka: For some reason Eureka can not find ny instances. When I run the services locally on Intellij, all of them shows up. I tried to Google it, and many had the same problem. 
 # Enterprise-2
