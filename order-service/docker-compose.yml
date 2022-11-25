@@ -1,0 +1,31 @@
+version: '3.1'
+services:
+
+  rabbit:
+    container_name: 'rabbit'
+    image: rabbitmq:3.11-management-alpine
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+      -
+  db:
+    container_name: 'db-testing-db'
+    image: postgres:alpine
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_DB=localdevdb
+      - POSTGRES_USER=localdevuser
+      - POSTGRES_PASSWORD=pirate
+
+  orderservice:
+    container_name: 'order-service'
+    image: orderservice:1
+    ports:
+      - '8086:8086'
+    profiles: ['orderservice']
+    environment:
+      POSTGRES_JDBC_USER: localdevuser
+      POSTGRES_JDBC_PASS: pirate
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://db:5432/localdevdb"
+      SPRING_PROFILES_ACTIVE: docker

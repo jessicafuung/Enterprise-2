@@ -1,0 +1,21 @@
+version: '3.1'
+services:
+  db:
+    container_name: 'db-testing-db'
+    image: postgres:alpine
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_DB=localdevdb
+      - POSTGRES_USER=localdevuser
+      - POSTGRES_PASSWORD=pirate
+
+  gateway:
+    container_name: 'gateway'
+    image: gateway:1
+    ports:
+      - '8080:8080'
+    profiles: ['gateway']
+    environment:
+      orderservice_baseurl: 'http://orderservice:8086/api'
+      SPRING_PROFILES_ACTIVE: docker
